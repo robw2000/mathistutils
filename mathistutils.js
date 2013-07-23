@@ -4,7 +4,7 @@ var util = require('util')
 // Extend underscore
 var MathistUtils = module.exports = underscore;
 
-MathistUtils.ulamNumber = function(num) {var count = 0; while (lnum > 1) {num = (num % 2 == 0) ? num / 2 : 3 * num + 1; count++;}; return count;}
+MathistUtils.ulamNumber = function(num) {var count = 0; while (num > 1) {num = (num % 2 == 0) ? num / 2 : 3 * num + 1; count++;}; return count;}
 MathistUtils.TestObj = function(index) {this.index = index; this.ulam = MathistUtils.ulamNumber(index);}
 MathistUtils.range_defval = function(s, e, v) {var d = (v !== undefined); var r = []; for (var i = s; i < e; i++) {r.push(d?v:i)}; return r;}
 MathistUtils.copyArray = function(a) {return a.map(function(x){return x;});}
