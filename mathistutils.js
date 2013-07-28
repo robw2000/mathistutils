@@ -4,16 +4,18 @@ var util = require('util')
 // Extend underscore
 var MathistUtils = module.exports = underscore;
 
-MathistUtils.ulamNumber = function(num) {var count = 0; while (num > 1) {num = (num % 2 == 0) ? num / 2 : 3 * num + 1; count++;}; return count;}
-MathistUtils.TestObj = function(index) {this.index = index; this.ulam = MathistUtils.ulamNumber(index);}
+MathistUtils.ulamConjCount = function(num) {var count = 0; while (num > 1) {num = (num % 2 == 0) ? num / 2 : 3 * num + 1; count++;}; return count;}
+MathistUtils.TestObj = function(index) {this.index = index; this.ulam = MathistUtils.ulamConjCount(index);}
 MathistUtils.range_defval = function(s, e, v) {var d = (v !== undefined); var r = []; for (var i = s; i < e; i++) {r.push(d?v:i)}; return r;}
 MathistUtils.copyArray = function(a) {return a.map(function(x){return x;});}
 MathistUtils.numsort = function(l) {l.sort(function(a,b){return a-b})}
 
 // Sort an array of numeric arrays
 // Example: [[0, 3, 5], [2, 5, 8], [0, 1, 2]] => [[0, 1, 2], [0, 3, 5], [2, 5, 8]]
-MathistUtils.sortnumarrays = function(l, sortDesc) {
+MathistUtils.sortnumarrays = function(l, sortDesc, internalSortDesc) {
   var mod = (sortDesc) ? -1 : 1;
+  var modInt = (internalSortDesc) ? -1 : 1;
+  l.forEach(function(sub) {sub.sort(function(a, b) { return modInt * (a - b); });});
   l.sort(function(l1, l2){
     if (l1.length !== l2.length) return mod * (l1.length - l2.length);
 
