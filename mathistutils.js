@@ -7,6 +7,7 @@ var mu = module.exports = underscore;
 mu.ulamConjCount = function(num) {var count = 0; while (num > 1) {num = (num % 2 == 0) ? num / 2 : 3 * num + 1; count++;}; return count;}
 mu.TestObj = function(index) {this.index = index; this.ulam = mu.ulamConjCount(index);}
 mu.copyArray = function(a) {var b = []; a.forEach(function(x){b.push(x);}); return b;}
+mu.copyNestedArray = function(a) {var b = []; a.forEach(function(x){b.push(mu.isArray(x)?mu.copyNestedArray(x):x);}); return b;}
 mu.range_defval = function(s, e, v) {var d = (v !== undefined); if (mu.isArray(v)) {v = mu.copyArray(v)}; var r = []; for (var i = s; i < e; i++) {r.push(d?mu.isArray(v)?mu.copyArray(v):v:i)}; return r;}
 mu.numsort = function(l) {l.sort(function(a,b){return a-b})}
 
