@@ -16,7 +16,7 @@
     "url": "git://github.com/robw2000/mathistutils.git"
   },
   "main": "mathistutils.js",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "engines": {
     "node": ">=0.8.0"
   },
