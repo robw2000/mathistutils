@@ -10,6 +10,9 @@ mu.copyArray = function(a) {var b = []; a.forEach(function(x){b.push(x);}); retu
 mu.copyNestedArray = function(a) {var b = []; a.forEach(function(x){b.push(mu.isArray(x)?mu.copyNestedArray(x):x);}); return b;}
 mu.range_defval = function(s, e, v) {var d = (v !== undefined); if (mu.isArray(v)) {v = mu.copyArray(v)}; var r = []; for (var i = s; i < e; i++) {r.push(d?mu.isArray(v)?mu.copyArray(v):v:i)}; return r;}
 mu.numsort = function(l) {l.sort(function(a,b){return a-b})}
+mu.sum = function(l) {return (l.length > 0) ? mu.reduce(l, function(memo, num){return memo + num}) : 0}
+mu.average = function(l) {return (l.length > 0) ? mu.sum(l) / l.length : 0}
+
 
 // Sort an array of numeric arrays
 // Example: [[0, 3, 5], [2, 5, 8], [0, 1, 2]] => [[0, 1, 2], [0, 3, 5], [2, 5, 8]]
